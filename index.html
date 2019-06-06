@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			background-image: url(bg.jpg);
+		}
+
+	</style>
+</head>
+<body>
+	<h1>ОЧКИ:<span class="score"></span></h1>
+	<h1>ЖУКИ:<span class="bugs"></span></h1>
+	<script>
+		let score = document.querySelector('.score');
+		let bugs = document.querySelector('.bugs');
+		let func = function(arg) { //функция с аргументом
+			let randx = Math.random()*arg
+			let roundx = Math.round(randx)
+			return roundx
+		}
+		func(5000)
+		score1 = 0;
+		bugs1 = 0;
+		score.innerHTML = score1
+		bugs.innerHTML = bugs1
+		let x = function(){
+			let img = document.createElement("img")
+			document.body.appendChild(img)
+			img.src = "img.svg"
+			img.style.height = "50px"
+			img.style.width = "50px"
+			img.style.position = "absolute"
+
+			img.style.marginLeft = func(1900) + "px"
+			img.style.marginTop = func(550) + "px"
+			bugs1 = bugs1 + 1;
+			bugs.innerHTML = bugs1
+			img.onclick = function(){
+				img.style.display = "none";
+				score1 = score1 + 1;
+				score.innerHTML = score1;
+				bugs1 = bugs1 - 1;
+				bugs.innerHTML = bugs1;
+			}
+		}
+		let interval = setInterval(x,1000);
+		
+		let y = function(){
+			if ( bugs1 >= 5  ) {//условие
+				alert("winner")
+	 		} 
+	 		else {
+	 			alert("looooser")
+	 		}
+			clearInterval(interval)
+ 		}
+ 		
+ 		let timeout = setTimeout(y,20000)
+		
+		
+		
+	</script>
+</body>
+</html>
